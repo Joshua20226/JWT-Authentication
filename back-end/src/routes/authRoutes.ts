@@ -1,4 +1,4 @@
-import { FastifyInstance } from 'fastify';
+import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import { login, register, logout, checkToken } from '../controllers/authController.js';
 import { loginBodySchema, registerBodySchema } from '../schema/authSchema.js';
 
@@ -37,14 +37,26 @@ const loginOpts = {
       200: {
         status_code: { type: 'string' },
         message: { type: 'string' }, 
-        token: { type: 'string' } 
+        error: { type: 'string' } 
       },
       400: {
 
       }
     }
   },
-  handler: login
+  handler: login,
+  errorHandler: (error: any, request: FastifyRequest, reply: FastifyReply) => {
+    if (error.validation) {
+      const err = error.validation.map((v: any) => v.message).join(', ')
+      console.log(error.validation)
+      return reply.code(400).send({
+        // status_code: '400',
+        // message: 'Invalid request body',
+        error: error.validation.map((v: any) => v.message).join(', ')
+      })
+    }
+    throw error
+  }
 }
 
 const logoutOpts = {

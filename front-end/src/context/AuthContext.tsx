@@ -69,7 +69,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       setUser(response.data.user)
       setErrorMessage('');
-      router.push('/dashboard');
+      router.push('/profile');
     } catch (error: any) {
       const errorMessage = error.response?.data.error || error.message
       setErrorMessage(errorMessage)

@@ -4,7 +4,7 @@ import { useAuth } from '@/context/AuthContext';
 import { useState, useEffect } from 'react';
 import { Transition } from '@headlessui/react';
 import Image from 'next/image';
-// import logo from '/public/images/logo.png';
+import logo from '/public/images/logo.png';
 
 export default function Navbar() {
   const { user, logout } = useAuth();
@@ -48,17 +48,9 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/stories" className="text-surface-700 dark:text-surface-300 hover:text-brand-primary dark:hover:text-brand-primary transition-colors">
-              Discover Stories
-            </Link>
-            
+          <div className="hidden md:flex items-center space-x-8">            
             {user ? (
-              <>
-                <Link href="/dashboard" className="text-surface-700 dark:text-surface-300 hover:text-brand-primary dark:hover:text-brand-primary transition-colors">
-                  Write
-                </Link>
-                
+              <>                
                 <div className="relative ml-3 group">
                   <button 
                     className="flex items-center text-surface-700 dark:text-surface-300 hover:text-brand-primary dark:hover:text-brand-primary"
@@ -137,36 +129,15 @@ export default function Navbar() {
       >
         <div className="md:hidden bg-white dark:bg-surface-800 shadow-md">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <Link
-              href="/stories"
-              className="block px-3 py-2 rounded-md text-base font-medium text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700"
-              onClick={() => setIsMobileOpen(false)}
-            >
-              Discover Stories
-            </Link>
             
             {user ? (
               <>
-                <Link
-                  href="/dashboard"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700"
-                  onClick={() => setIsMobileOpen(false)}
-                >
-                  Dashboard
-                </Link>
                 <Link
                   href="/profile"
                   className="block px-3 py-2 rounded-md text-base font-medium text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700"
                   onClick={() => setIsMobileOpen(false)}
                 >
                   Profile
-                </Link>
-                <Link
-                  href="/dashboard"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-surface-700 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-700"
-                  onClick={() => setIsMobileOpen(false)}
-                >
-                  Dashboard
                 </Link>
                 <button
                   onClick={() => {

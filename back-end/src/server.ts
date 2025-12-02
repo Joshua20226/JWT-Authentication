@@ -4,7 +4,10 @@ import Fastify from 'fastify';
 import { middleware } from './middleware/middleware.js';
 import Ajv from 'ajv'
 import fastifyCookie from '@fastify/cookie';
+import fastifyCors from '@fastify/cors'
 import fastifyJwt from '@fastify/jwt';
+import mongoose from 'mongoose';
+import addErrors from "ajv-errors";
 
 dotenv.config();
 
@@ -18,7 +21,8 @@ const fastify = Fastify({
 })
 
 // Input Validation 
-export const ajv = new Ajv({ allErrors: true });
+export const ajv = new Ajv.default({ allErrors: true });
+addErrors.default(ajv, { singleError: true }); 
 
 // CORS
 const frontend_url = process.env.FRONTEND_URL
@@ -26,9 +30,6 @@ if (!frontend_url) {
   throw new Error('FRONTEND_URL env variable not found')
 }
 
-import fastifyCors from '@fastify/cors'
-import authRoutes from './routes/authRoutes.js';
-import mongoose from 'mongoose';
 await fastify.register(fastifyCors, {
   origin: [frontend_url],
   methods: ['GET', 'POST', 'PATCH', 'OPTIONS'],

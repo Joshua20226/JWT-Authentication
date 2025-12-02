@@ -4,14 +4,19 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html {
+@layer base {  
+  html, body, main {
+    @apply text-gray-900;
     font-family: 'Inter', system-ui, sans-serif;
-  }
-  
-  body {
-    @apply bg-gray-50 text-gray-900;
     /* background-color: #FDFEB1; */
+    background-color: #e5f8c6;
+    background-image: 
+      url('/images/bg_overlay1.png'),
+      url('/images/bg_overlay2.png'),
+      url('/images/bg_overlay3.png');
+    background-repeat: no-repeat, no-repeat, no-repeat; 
+    background-position: center center center; 
+    background-size: cover, cover, cover; 
   }
 }
 

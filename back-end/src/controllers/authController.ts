@@ -2,7 +2,6 @@ import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import { loginBody, registerBody } from "../schema/authType.js";
 import { comparePassword, hashingPassword } from "../utils/bcryptPassword.js";
 import User from "../models/User.js";
-import { ValidateFunction } from 'ajv';
 
 export async function register(req: FastifyRequest<{ Body: registerBody }>, reply: FastifyReply) {
   const { username, email, password } = req.body;
