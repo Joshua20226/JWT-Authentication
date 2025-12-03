@@ -20,11 +20,11 @@ export default function Register() {
 
   return (
     // <div className="min-h-screen flex border border-red-300">
-      <div className="absolute top-0 h-screen w-[50%] space-y-8 p-8 rounded-lg shadow-md">
-        <div className='flex flex-col w-2/5 mx-[30rem] my-auto'>
+      <div className="mt-12 flex items-center justify-center">
+        <div className='max-w-md w-full space-y-8 p-8 rounded-lg shadow-md'>
           <div className="text-center">
-            <h2 className="text-4xl font-bold">ChillWrite</h2>
-            <p className="mt-2 text-gray-600">Create your writing space</p>
+            <h2 className="text-4xl font-bold">Register</h2>
+            <p className="mt-2 text-gray-600"></p>
           </div>
 
           {errorMessage && (

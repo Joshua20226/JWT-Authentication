@@ -18,20 +18,21 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-md">
+    <div className="mt-12 flex items-center justify-center">
+      <div className="max-w-md w-full space-y-8 p-8 rounded-lg shadow-md">
         <div className="text-center">
-          <p className="mt-2 text-gray-600">Welcome back</p>
+          <h2 className="text-4xl font-bold">Sign In</h2>
+          <p className="mt-2 text-gray-600">Welcome Back</p>
         </div>
 
         {errorMessage && (
-          <div className="bg-red-50 border-l-4 border-red-400 p-4 rounded">
+          <div className="border-l-4 border-red-400 p-4 rounded">
             <p className="text-red-700">{errorMessage}</p>
           </div>
         )} 
 
         {registerMessage && (
-          <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded">
+          <div className="border-l-4 border-green-400 p-4 rounded">
             <p className="text-green-500">{registerMessage}</p>
           </div>
         )} 

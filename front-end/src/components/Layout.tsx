@@ -15,7 +15,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     //  bg-gradient-to-br from-surface-50 to-surface-100
-    <body className="transition-colors duration-300">
+    <div className="transition-colors duration-300">
       <Navbar />
       <main className="container h-screen pt-12 py-8 animate-fade-in ">
         {children}
@@ -26,6 +26,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <p>© {new Date().getFullYear()}</p>
         </div>
       </footer>
-    </body>
+    </div>
   );
 };

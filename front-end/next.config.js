@@ -3,7 +3,7 @@ module.exports = {
     return [
       {
         source: '/api/:path*',
-        destination: 'http://localhost:5000/api/:path*'
+        destination: 'http://192.168.0.157:5000/api/:path*'
       }
     ]
   }

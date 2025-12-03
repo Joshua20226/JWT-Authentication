@@ -37,9 +37,11 @@ export async function middleware(request: NextRequest) {
 
     
     if (path == '/auth/login' || path == '/auth/register') {
+        console.log('auth routes')
         if (!accessToken && !refreshToken) {
           const response = NextResponse.next();
           addSecurityHeaders(response);
+          console.log('auth route no token continue')
           return response;
         }
 
@@ -47,11 +49,13 @@ export async function middleware(request: NextRequest) {
         if (verified) {
           const response = NextResponse.redirect(new URL('/dashboard', request.url))
           addSecurityHeaders(response);
+          console.log('auth route got token continue')
           return response;
         }
 
         const response = NextResponse.next();
         addSecurityHeaders(response);
+        console.log('auth route continue')
         return response;
     }
 
@@ -121,9 +125,11 @@ export async function middleware(request: NextRequest) {
     //     return response;
     // }
 
-    // const response = NextResponse.next();
-    // addSecurityHeaders(response);
-    // return response;
+    const response = NextResponse.next();
+    addSecurityHeaders(response);
+    console.log('passing through')
+    return response;
+    
 }
 
 function addSecurityHeaders(response: NextResponse) {
